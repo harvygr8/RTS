@@ -57,7 +57,7 @@ public class SaveManagerJSON : MonoBehaviour
             File.Delete(filename);
         }
 
-        foreach (GameObject unit in GameObject.FindGameObjectsWithTag("PlayerBuilding"))
+        foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Silo"))
         {
 
             JSONArray data = new JSONArray();
@@ -94,7 +94,7 @@ public class SaveManagerJSON : MonoBehaviour
 
         }
 
-        foreach (GameObject unit in GameObject.FindGameObjectsWithTag("PlayerUnit"))
+        foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Worker"))
         {
             JSONArray data = new JSONArray();
             data.Add(unit.transform.position.x);

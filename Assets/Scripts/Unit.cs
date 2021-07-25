@@ -28,6 +28,7 @@ public class Unit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         if (targetName != null)
         {
             target = GameObject.Find(targetName).transform;
@@ -77,14 +78,22 @@ public class Unit : MonoBehaviour
 
     void StartMiningRoutine()
     {
-        Debug.Log("Mining Routine Started!");
-        if (!hasMined)
+        //gotta make sure theres always one silo otw scipt bugs out
+        if (StorageEntity.Entities.Count != 0)
         {
-            GoToNode();
+            Debug.Log("Mining Routine Started!");
+            if (!hasMined)
+            {
+                GoToNode();
+            }
+            if (hasMined)
+            {
+                GoToNearestSilo();
+            }
         }
-        if(hasMined)
+        else
         {
-            GoToNearestSilo();
+            Debug.Log("No silos found!");
         }
     }
 

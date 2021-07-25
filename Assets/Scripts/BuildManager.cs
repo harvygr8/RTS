@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+/*using UnityEditor.Experimental.GraphView;
+*/
 using UnityEngine;
 
 public class BuildManager : MonoBehaviour
@@ -19,19 +20,19 @@ public class BuildManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //unitcommander = gameObject;
+        unitcommander = GameObject.FindGameObjectWithTag("WorldManager");
     }
 
     // Update is called once per frame
     void Update()
     {
         //currentBuilding.position = new Vector3(place.x, 0, place.z);
-        if (Input.GetKeyDown(KeyCode.B))
+/*        if (Input.GetKeyDown(KeyCode.B))
         {
-            unitcommander.SetActive(false);
+            unitcommander.GetComponent<UnitCommander>().enabled = false;
             isPlacing = true;
             pref = Instantiate(prefab, hit.point, Quaternion.identity);
-        }
+        }*/
         if (isPlacing)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -50,13 +51,13 @@ public class BuildManager : MonoBehaviour
                     bld = Instantiate(on_prefab, final, Quaternion.identity);
                     bld.name = on_prefab.name + Random.Range(100, 900).ToString();
                     isPlacing = false;
-                    unitcommander.SetActive(true);
+                    unitcommander.GetComponent<UnitCommander>().enabled = true;
                 }
             }
             if(Input.GetKeyDown(KeyCode.Escape))
             {
                 Destroy(pref);
-                unitcommander.SetActive(true);
+                unitcommander.GetComponent<UnitCommander>().enabled = true;
                 isPlacing = false;
             }
         }
@@ -66,11 +67,26 @@ public class BuildManager : MonoBehaviour
     {
         prefab = blueprint_prefabs[0];
         on_prefab = final_prefabs[0];
+        unitcommander.GetComponent<UnitCommander>().enabled = false;
+        isPlacing = true;
+        pref = Instantiate(prefab, hit.point, Quaternion.identity);
     }
     public void SetResource()
     {
         prefab = blueprint_prefabs[1];
         on_prefab = final_prefabs[1];
+        unitcommander.GetComponent<UnitCommander>().enabled = false;
+        isPlacing = true;
+        pref = Instantiate(prefab, hit.point, Quaternion.identity);
+    }
+
+    public void SetSilo()
+    {
+        prefab = blueprint_prefabs[2];
+        on_prefab = final_prefabs[2];
+        unitcommander.GetComponent<UnitCommander>().enabled = false;
+        isPlacing = true;
+        pref = Instantiate(prefab, hit.point, Quaternion.identity);
     }
 
 

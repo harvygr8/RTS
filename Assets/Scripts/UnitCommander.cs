@@ -95,7 +95,7 @@ public class UnitCommander : MonoBehaviour
             
             if (Physics.Raycast(ray, out RaycastHit hitInfo))
             {
-                if (hitInfo.collider.gameObject.CompareTag("PlayerUnit"))
+                if (hitInfo.collider.gameObject.CompareTag("Worker"))
                 {
                     //ClearPreviousSelections();
 

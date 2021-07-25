@@ -16,6 +16,8 @@ TagManager:
   - World
   - WorldTile
   - PlayerBuilding
+  - Silo
+  - Worker
   layers:
   - Default
   - TransparentFX

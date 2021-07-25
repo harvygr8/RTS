@@ -159,13 +159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be67e69b0cf5184dae5f6cfd123e580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResourceDelay: 2
-  StartTime: 2
-  RepairTime: 6
-  multiplier: 0
-  StopMining: 0
-  TowerHealth: 100
-  OfflineTowerPrefab: {fileID: 3967561080246852575, guid: 4df4da5efba81614cb16e0b73a8c7963, type: 3}
 --- !u!1 &2363638959871526538
 GameObject:
   m_ObjectHideFlags: 0
