@@ -33,8 +33,9 @@ public class LineTool : MonoBehaviour
                         if (hit.collider.CompareTag("Resource"))
                         {
                             NewLine = Instantiate(Line);
+                            NewLine.GetComponent<LineConfig>().line = NewLine.GetComponent<LineRenderer>();
                             pos1 = hit.collider.gameObject.transform;
-                            NewLine.GetComponent<LineConfig>().start = pos1;
+                            NewLine.GetComponent<LineConfig>().line.SetPosition(0, pos1.position);
                             isLineStarted = true;
                         }
                     }
@@ -50,7 +51,7 @@ public class LineTool : MonoBehaviour
                         if (hit.collider.CompareTag("Resource"))
                         {
                             pos2 = hit.collider.gameObject.transform;
-                            NewLine.GetComponent<LineConfig>().end = pos2;
+                            NewLine.GetComponent<LineConfig>().line.SetPosition(1, pos2.position);
                             //Destroy(NewLine);
                             NewLine = null;
                             isLineStarted = false;
