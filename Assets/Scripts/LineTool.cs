@@ -23,7 +23,6 @@ public class LineTool : MonoBehaviour
     {
         if (isPlacing)
         {
-            NewLine = Instantiate(Line);
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -33,6 +32,7 @@ public class LineTool : MonoBehaviour
                     {
                         if (hit.collider.CompareTag("Resource"))
                         {
+                            NewLine = Instantiate(Line);
                             pos1 = hit.collider.gameObject.transform;
                             NewLine.GetComponent<LineConfig>().start = pos1;
                             isLineStarted = true;
@@ -51,7 +51,11 @@ public class LineTool : MonoBehaviour
                         {
                             pos2 = hit.collider.gameObject.transform;
                             NewLine.GetComponent<LineConfig>().end = pos2;
+                            //Destroy(NewLine);
+                            NewLine = null;
+                            isLineStarted = false;
                             isPlacing = false;
+
                         }
                     }
                 }
